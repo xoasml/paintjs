@@ -4,6 +4,7 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const modeBtn = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
+const colorPonter = document.getElementsByClassName("jsCP");
 
 const INITIAL_COLOR = "#2c2c2c";
 const CANVAS_SIZE = 700;
@@ -57,6 +58,15 @@ function handleColorClick(event) {
   const color = event.target.style.backgroundColor;
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
+  lookColor(event.target);
+}
+
+function lookColor(target) {
+  Array.from(colorPonter).forEach((point) =>
+    point.classList.remove("color-pointer-showing")
+  );
+
+  Array.from(target.children)[0].classList.add("color-pointer-showing");
 }
 
 function handleRangeChange(event) {
